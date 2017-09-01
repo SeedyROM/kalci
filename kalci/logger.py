@@ -15,7 +15,7 @@ class logger:
     """
     __instance = None
     def __new__(cls):
-        """Abuse the __new__ function to allow this class persistances.
+        """Abuse the __new__ function to allow instance persistance.
         Singleton hacks.
         """
         if logger.__instance is None:

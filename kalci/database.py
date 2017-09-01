@@ -15,7 +15,7 @@ class db:
     """
     __instance = None
     def __new__(cls, path_to_db=settings.DATA_PATH):
-        """Abuse the __new__ function to allow this class persistances.
+        """Abuse the __new__ function to allow instance persistance.
         Singleton hacks.
         """
         if db.__instance is None:
