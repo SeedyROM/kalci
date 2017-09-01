@@ -11,7 +11,8 @@ KalCI is a command line tool for general purpose nonsense and keeping track of m
 ---
 
 ## NAIVE TEST IMPLEMENTATION
-`cd __kalci_directory__`
-`python -m kalci`
+`$ cd __kalci_directory__`
+
+`$ python -m kalci`
 
 ##### Enjoy!
