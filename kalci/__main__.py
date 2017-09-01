@@ -1,4 +1,4 @@
-"""The main kalci module, it get's loaded first.
+"""The main kalci module, it gets loaded first.
 """
 import click
 import os
