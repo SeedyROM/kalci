@@ -54,7 +54,7 @@ def main(path_to_db):
     #
     # End trying to create hidden data.
     #
-    
+
     # Create the instance of our db singleton.
     db(path_to_db)
 
