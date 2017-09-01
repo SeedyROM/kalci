@@ -33,8 +33,8 @@ class db:
         @logger.log
         @wraps(func)
         def wrapped(*args, **kwargs):
-            """Pass the wrapped function some required arguments for databse use.
-            """
+            # Pass the wrapped function some required arguments
+            # for database use.
             connection = db().connection
             cursor = connection.cursor()
             func(connection, cursor, *args, **kwargs)
