@@ -2,9 +2,8 @@ import click
 import os
 import sqlite3
 
-import settings
-
-from database import db
+from . import settings
+from .database import db
 
 
 @db.use
@@ -46,6 +45,5 @@ def main(path_to_db):
     do_stuff()
     do_more_stuff()
 
-
-if __name__ == '__main__':
-    main()
+# Call our main...
+main()

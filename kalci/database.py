@@ -2,11 +2,11 @@ import atexit
 import sqlite3
 import os
 
-import settings
 
 from functools import wraps
 
-from logger import logger
+from .logger import logger
+from . import settings
 
 
 class db:
@@ -17,7 +17,7 @@ class db:
 
             db.__instance.connection = sqlite3.connect(os.path.join(path_to_db, settings.DB_NAME))
             atexit.register(db.__instance.connection.close)
-            
+
         return db.__instance
 
     @staticmethod

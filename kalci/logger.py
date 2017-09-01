@@ -2,9 +2,9 @@ import sys
 import traceback
 import os
 
-import settings
-
 from functools import wraps
+
+from . import settings
 
 
 class logger:
