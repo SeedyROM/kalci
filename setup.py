@@ -10,6 +10,6 @@ setup(
     author_email = 'zackkollar@gmail.com',
     url = 'https://github.com/SeedyROM/kalci', # use the URL to the github repo
     # download_url = 'https://github.com/peterldowns/kalci/archive/0.1.tar.gz', # I'll explain this in a second
-    keywords = ['testing', 'logging', 'example'], # arbitrary keywords
+    keywords = ['mundane', 'tasks', 'calcuation', 'day2day'], # arbitrary keywords
     classifiers = [],
 )
