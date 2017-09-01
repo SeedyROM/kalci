@@ -62,7 +62,10 @@ def test_urwid(terminal_colors):
     for item in [outside, inside, streak, inside, outside]:
         pile.contents.append((item, pile.options()))
 
-    loop.run()
+    try:
+        loop.run()
+    except KeyboardInterrupt:
+        pass
 
 
 @click.command()
@@ -91,12 +94,12 @@ def main(path_to_db, terminal_colors):
     # Create the instance of our db singleton.
     db(path_to_db)
 
-    # Test db stuff.
-    # do_stuff()
-    # do_more_stuff()
-
     # Test interface code.
     test_urwid(terminal_colors)
+
+    # Test db stuff.
+    do_stuff()
+    do_more_stuff()
 
 # Execute our code.
 if __name__ == '__main__':
