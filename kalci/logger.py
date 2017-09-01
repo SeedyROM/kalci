@@ -5,8 +5,8 @@ import os
 from functools import wraps
 
 class logger:
-    LOGGING = 1
-    LOG_PATH = '/var/log/kalci'
+    LOGGING = 2
+    LOG_PATH = '.kalci'
     LOG_NAME = 'kalci.log'
 
     __instance = None
@@ -15,11 +15,14 @@ class logger:
             logger.__instance = object.__new__(cls)
 
             try:
-                os.makedirs(logger.LOG_PATH)
-            except OSError:
-                pass
+                if not os.path.exists(logger.LOG_PATH):
+                    os.makedirs(logger.LOG_PATH)
+            except OSError as e:
+                print('Failed to setup logging...')
+                exit(-1)
             else:
-                logger.__instance.log = open(os.path.join(logger.LOG_PATH, logger.LOG_NAME), 'w')
+                print(os.path.join(logger.LOG_PATH, logger.LOG_NAME))
+                logger.__instance.log = open(os.path.join(logger.LOG_PATH, logger.LOG_NAME), 'w+')
 
 
             logger.__instance.terminal = sys.stdout
@@ -28,7 +31,7 @@ class logger:
 
     def write(self, message):
         self.terminal.write(message + '\n')
-        self.log(message + '\n')
+        self.log.write(message + '\n')
 
     def flush():
         pass
@@ -38,9 +41,13 @@ class logger:
         @wraps(func)
         def wrapped(*args, **kwargs):
             try:
-                logger().write(f'Started executing function "{func.__name__}" in {__file__}...')
+                if logger.LOGGING > 1: logger().write(
+                    f'Started executing function "{func.__name__}" in {__file__}...')
+
                 func(*args, **kwargs)
-                logger().write(f'Leaving function "{func.__name__}" in {__file__}...')
+
+                if logger.LOGGING > 1: logger().write(
+                    f'Leaving function "{func.__name__}" in {__file__}...')
             except BaseException as e:
                 raise e from None
                 logger().write(f'Something went wrong...\n')

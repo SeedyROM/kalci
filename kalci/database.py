@@ -1,3 +1,4 @@
+import atexit
 import sqlite3
 
 from functools import wraps
@@ -12,6 +13,7 @@ class db:
         if db.__instance is None:
             db.__instance = object.__new__(cls)
             db.__instance.connection = sqlite3.connect(path_to_db)
+            atexit.register(db.__instance.connection.close)
         return db.__instance
 
     @staticmethod
@@ -22,6 +24,5 @@ class db:
             connection = db().connection
             cursor = connection.cursor()
             func(connection, cursor, *args, **kwargs)
-            db().connection.close()
 
         return wrapped
