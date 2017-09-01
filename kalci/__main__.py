@@ -42,14 +42,19 @@ def main(path_to_db):
     """Kalci's first point of execution, all the magic happens here.
     """
 
+    #
     # Try to make our hidden data directory.
+    #
     try:
         if not os.path.exists(settings.DATA_PATH):
             os.makedirs(settings.DATA_PATH)
     except OSError as e:
         print(f'Failed to create data directory...: {e}')
         exit(-1)
-
+    #
+    # End trying to create hidden data.
+    #
+    
     # Create the instance of our db singleton.
     db(path_to_db)
 
