@@ -11,7 +11,7 @@ from . import settings
 
 
 class db:
-    """ Singleton pattern type database connection helper.
+    """Singleton pattern type database connection helper.
     """
     __instance = None
     def __new__(cls, path_to_db=settings.DATA_PATH):
@@ -28,7 +28,7 @@ class db:
 
     @staticmethod
     def use(func):
-        """ Wraps a specified function with connection/cursor interfaces.
+        """Wraps a specified function with connection/cursor interfaces.
         """
         @logger.log
         @wraps(func)
